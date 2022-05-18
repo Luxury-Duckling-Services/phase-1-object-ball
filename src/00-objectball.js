@@ -26,8 +26,6 @@ stats2 = [numbers2 , shoe2 , points2 , rebounds2 , assists2 , steals2 , blocks2 
 
 stats = ['numbers' , 'shoe' , 'points' , 'rebounds' , 'assists' , 'steals' , 'blocks' , 'slamDunks']
 
-//
-
 let gameObj = {}
 gameObj['home'] = {}
 gameObj['away'] = {}
@@ -38,9 +36,39 @@ gameObj['away']['teamName'] = teamName2
 gameObj['home']['colors'] = colors1
 gameObj['away']['colors'] = colors2
 
+let playerObj1 = {}
+let playerObj2 = {}
+
 //
 
-let playerObj1 = {}
+players1.forEach( ( player , i ) => {
+    let statObj = {}
+
+    stats.forEach( ( stat , j ) => {
+        statObj[stats[j]] = stats1[j][i]
+    })
+
+    playerObj1[players1[i]] = { ... statObj }
+})
+
+console.log(playerObj1)
+
+players2.forEach( ( player , i ) => {
+    let statObj = {}
+
+    stats.forEach( ( stat , j ) => {
+        statObj[stats[j]] = stats2[j][i]
+    })
+
+    playerObj2[players2[i]] = { ... statObj }
+})
+
+console.log(playerObj2)
+
+
+/*
+
+//
 
 let i = 0
 for (let player of players1){
@@ -56,8 +84,6 @@ for (let player of players1){
     i += 1
 }
 
-let playerObj2 = {}
-
 i = 0
 for (let player of players2){
     let statObj = {}
@@ -71,6 +97,8 @@ for (let player of players2){
     playerObj2[players2[i]] = { ... statObj}
     i += 1
 }
+
+*/
 
 gameObj['home']['players'] = playerObj1
 gameObj['away']['players'] = playerObj2
